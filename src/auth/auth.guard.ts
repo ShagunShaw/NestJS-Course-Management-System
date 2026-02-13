@@ -1,4 +1,4 @@
-// We will use this file's components in case of our protected routes.
+// We will use this file's components in case of our protected routes for authentication (whether the user is logged in or not)
 
 import {
   CanActivate,

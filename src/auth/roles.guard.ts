@@ -1,3 +1,4 @@
+// We will use this file for our protected routes in case of authentication
 
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
