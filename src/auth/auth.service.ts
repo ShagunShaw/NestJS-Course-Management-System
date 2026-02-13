@@ -3,6 +3,7 @@ import { UserService } from 'src/user/user.service';
 import { RegisterDto } from './dto/registerUser.dto';
 import bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { access } from 'fs';
 
 @Injectable()
 export class AuthService {
@@ -25,9 +26,9 @@ export class AuthService {
 
         const user= await this.userService.createUser({...registerUserDto, password: hashedPassword})
         
-        const payload= {sub: user._id}
+        const payload= {sub: user._id, role: 'admin'}       // only for testing purpose we had explicitly written 'roles: admin', but in real-time, we will take this info from the frontend only
         const token= await this.jwtService.signAsync(payload);
 
-        return user;
+        return {access_token: token};
     }
 }

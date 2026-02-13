@@ -34,4 +34,9 @@ export class UserService {
             throw err;
         }
     }
+
+    async getUserById(id: String)
+    {
+        return await this.userModel.findOne({_id: id}).select("-password");     // Here we will use the basic 'mongoose' methods as we used to do in express
+    }
 }
