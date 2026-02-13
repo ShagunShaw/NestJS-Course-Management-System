@@ -1,5 +1,6 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { RegisterDto } from './dto/registerUser.dto';
 
 @Controller('auth')         // Here 'auth' is my prefix and all routes of this controller will start from 'auth/'
 export class AuthController {
@@ -9,8 +10,8 @@ export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
     @Post('register')       // so now our final route will be '/auth/register'
-    register() {
-        const result= this.authService.registerUser();
-        return result;
+    async register(@Body() registerUserDto: RegisterDto) {       // Dto stands for 'Data Transfer Object'
+        const createdUser= await this.authService.registerUser(registerUserDto);
+        return createdUser;
     }
 }

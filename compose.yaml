@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    volumnes:
+      - mongodb_data:/data/db
+
+volumnes:
+  mongodb_data:
+
+# To start this run 'docker compose up -d'
+# understand this from gpt and timestamp 1.10.00
+# also understand how this actually work, do we create a database locally or use it from the cloud.
